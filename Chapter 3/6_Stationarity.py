@@ -4,7 +4,7 @@ from statsmodels.tsa.stattools import adfuller
 
 # Setting the beginning and end of the historical data
 start_date = '1950-01-01'
-end_date   = '2023-01-23'
+end_date = '2023-01-23'
 
 # Creating a dataframe and downloading the CPI data
 cpi = pdr.DataReader('CPIAUCSL', 'fred', start_date, end_date)
@@ -19,7 +19,7 @@ count_nan = cpi['CPIAUCSL'].isnull().sum()
 print('Number of nan values in the CPI dataframe: ' + str(count_nan))
 
 # Transforming the CPI into a year-on-year measure
-cpi = cpi.pct_change(periods = 12, axis = 0) * 100
+cpi = cpi.pct_change(periods=12, axis=0) * 100
 
 # Dropping the nan values from the rows
 cpi = cpi.dropna()
@@ -48,13 +48,13 @@ sinewave_ascending = np.sin(np.arange(0, length, length / 1000))
 a = 0.01
 
 # Looping to add a trend factor
-for i in range(len(sinewave_ascending)): 
+for i in range(len(sinewave_ascending)):
     sinewave_ascending[i] = a + sinewave_ascending[i]
     a = 0.01 + a
-    
+
 # Plotting the series
-plt.plot(sinewave, label = 'Sine Wave', color = 'black')
-plt.plot(sinewave_ascending, label = 'Ascending Sine Wave', color = 'grey')
+plt.plot(sinewave, label='Sine Wave', color='black')
+plt.plot(sinewave_ascending, label='Ascending Sine Wave', color='grey')
 
 # Calling the grid function for better interpretability
 plt.grid()
@@ -66,11 +66,11 @@ plt.legend()
 plt.show()
 
 # ADF testing | Normal sine wave
-adfuller(sinewave) 
+adfuller(sinewave)
 print('p-value: %f' % adfuller(sinewave)[1])
 
 # ADF testing | Ascending sine wave
-adfuller(sinewave_ascending) 
+adfuller(sinewave_ascending)
 print('p-value: %f' % adfuller(sinewave_ascending)[1])
 
 # Importing the KPSS library
@@ -83,7 +83,7 @@ print('p-value: %f' % kpss(sinewave)[1])
 print('p-value: %f' % kpss(sinewave_ascending)[1])
 
 # KPSS testing while taking into account the trend | Ascending sine wave
-print('p-value: %f' % kpss(sinewave_ascending, regression = 'ct')[1])
+print('p-value: %f' % kpss(sinewave_ascending, regression='ct')[1])
 
 '''
 The 'ct' argument is used to check if the dataset is stationary 
@@ -95,4 +95,4 @@ to check if the data is stationary around a constant.
 print('p-value: %f' % kpss(cpi)[1])
 
 # Applying the KPSS (with trend consideration) test on the CPI data
-print('p-value: %f' % kpss(cpi, regression = 'ct')[1])
+print('p-value: %f' % kpss(cpi, regression='ct')[1])

@@ -26,8 +26,8 @@ cpi_uk = cpi_uk.dropna()
 combined_cpi_data = pd.concat([cpi_us['CPIAUCSL'], cpi_uk['GBRCPIALLMINMEI']], axis = 1)
 
 # Calculating correlation
-combined_cpi_data.corr(method = 'pearson')
-combined_cpi_data.corr(method = 'spearman')
+print(combined_cpi_data.corr(method = 'pearson'))
+print(combined_cpi_data.corr(method = 'spearman'))
 
 # Creating a dataframe and downloading the CPI data using its code name and its source
 cpi = pdr.DataReader('CPIAUCSL', 'fred', start_date, end_date)

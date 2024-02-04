@@ -1,4 +1,5 @@
 # Importing the required library
+import pandas as pd
 import pandas_datareader as pdr
 
 # Setting the beginning and end of the historical data
@@ -6,7 +7,9 @@ start_date = '1950-01-01'
 end_date = '2023-01-23'
 
 # Creating a dataframe and downloading the CPI data
-cpi = pdr.DataReader('CPIAUCSL', 'fred', start_date, end_date)
+# cpi = pdr.DataReader('CPIAUCSL', 'fred', start_date, end_date)
+# cpi.to_pickle("../data/ch03_01_cpi.pickle")
+cpi = pd.read_pickle("../00_data/ch03_01_cpi.pickle")
 
 # Printing the latest five observations of the dataframe
 print(cpi.tail())
@@ -45,6 +48,8 @@ plt.grid()
 
 # Calling the legend function so it appears with the chart
 plt.legend()
+plt.savefig("../01_pngs/ch03_01_cpi_mean.png")
+plt.close()
 plt.close()
 
 # Calculating the median of the dataset
@@ -65,3 +70,5 @@ plt.grid()
 
 # Calling the legend function so it appears with the chart
 plt.legend()
+plt.savefig("../01_pngs/ch03_01_cpi_median.png")
+plt.close()

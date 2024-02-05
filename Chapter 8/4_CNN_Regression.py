@@ -5,8 +5,8 @@ import keras
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas_datareader as pdr
-from master_function import data_preprocessing, plot_train_test_values
-from master_function import calculate_accuracy, model_bias
+from dlf.master_function import data_preprocessing, plot_train_test_values
+from dlf.master_function import calculate_accuracy, model_bias
 from sklearn.metrics import mean_squared_error
 
 # Set the start and end dates for the data

@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
-from master_function import import_cot_data, data_preprocessing
-from master_function import plot_train_test_values, calculate_directional_accuracy
+from dlf.master_function import import_cot_data, data_preprocessing
+from dlf.master_function import plot_train_test_values, calculate_directional_accuracy
 from sklearn.metrics import mean_squared_error
 
 # Calling the function and preprocessing the data

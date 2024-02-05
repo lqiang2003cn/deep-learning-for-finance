@@ -5,8 +5,8 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dense, Dropout, BatchNormalization
 from tensorflow.keras.callbacks import EarlyStopping
 import pandas_datareader as pdr
-from master_function import data_preprocessing, plot_train_test_values
-from master_function import calculate_directional_accuracy
+from dlf.master_function import data_preprocessing, plot_train_test_values
+from dlf.master_function import calculate_directional_accuracy
 from sklearn.metrics import mean_squared_error
 
 # Set the start and end dates for the data

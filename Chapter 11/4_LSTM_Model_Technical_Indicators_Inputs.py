@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
-from master_function import mass_import, rsi, ma, calculate_accuracy
-from master_function import plot_train_test_values, multiple_data_preprocessing
+from dlf.master_function import mass_import, rsi, ma, calculate_accuracy
+from dlf.master_function import plot_train_test_values, multiple_data_preprocessing
 from sklearn.metrics import mean_squared_error
-from master_function import add_column, delete_column
+from dlf.master_function import add_column, delete_column
 
 # Calling the function and preprocessing the data
 data = mass_import(0, 'W1')[:, -1]

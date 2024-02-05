@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
-from master_function import data_preprocessing, compute_diff
-from master_function import calculate_directional_accuracy, update
+from dlf.master_function import data_preprocessing, compute_diff
+from dlf.master_function import calculate_directional_accuracy, update
 from sklearn.metrics import mean_squared_error
 import tensorflow as tf
 import random

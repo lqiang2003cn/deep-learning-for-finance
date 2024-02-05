@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from keras.models import Sequential
 from keras.layers import Dense
-from master_function import data_preprocessing, mass_import
-from master_function import plot_train_test_values, forecasting_threshold
+from dlf.master_function import data_preprocessing, mass_import
+from dlf.master_function import plot_train_test_values, forecasting_threshold
 
 # Setting the hyperparameters
 num_lags = 500

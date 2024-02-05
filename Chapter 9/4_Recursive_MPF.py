@@ -5,8 +5,8 @@ import keras
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from master_function import data_preprocessing, plot_train_test_values, recursive_mpf
-from master_function import calculate_directional_accuracy
+from dlf.master_function import data_preprocessing, plot_train_test_values, recursive_mpf
+from dlf.master_function import calculate_directional_accuracy
 from sklearn.metrics import mean_squared_error
 
 # Import the data

@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.linear_model import LinearRegression
-from master_function import data_preprocessing, mass_import
-from master_function import plot_train_test_values, calculate_accuracy, model_bias
+from dlf.master_function import data_preprocessing, mass_import
+from dlf.master_function import plot_train_test_values, calculate_accuracy, model_bias
 from sklearn.metrics import mean_squared_error
 
 # Importing the time series

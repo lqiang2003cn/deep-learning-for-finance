@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
-from master_function import data_preprocessing
-from master_function import plot_train_test_values, calculate_accuracy
+from dlf.master_function import data_preprocessing
+from dlf.master_function import plot_train_test_values, calculate_accuracy
 from sklearn.metrics import mean_squared_error
-from master_function import add_column, delete_row, volatility
+from dlf.master_function import add_column, delete_row, volatility
 
 # Calling the function and preprocessing the data
 data = pd.read_excel('Bitcoin_Daily_Historical_Data.xlsx').values

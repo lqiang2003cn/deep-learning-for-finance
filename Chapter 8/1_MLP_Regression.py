@@ -5,16 +5,16 @@ import keras
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas_datareader as pdr
-from master_function import data_preprocessing, plot_train_test_values
-from master_function import calculate_accuracy, model_bias
+from dlf.master_function import data_preprocessing, plot_train_test_values
+from dlf.master_function import calculate_accuracy, model_bias
 from sklearn.metrics import mean_squared_error
 
 # Set the start and end dates for the data
 start_date = '1990-01-01'
-end_date   = '2023-06-01'
+end_date = '2023-06-01'
 
 # Fetch S&P 500 price data
-data = np.array((pdr.get_data_fred('SP500', start = start_date, end = end_date)).dropna())
+data = np.array((pdr.get_data_fred('SP500', start=start_date, end=end_date)).dropna())
 
 # Difference the data and make it stationary
 data = np.diff(data[:, 0])
@@ -33,19 +33,19 @@ x_train, y_train, x_test, y_test = data_preprocessing(data, num_lags, train_test
 model = Sequential()
 
 # First hidden layer
-model.add(Dense(num_neurons_in_hidden_layers, input_dim = num_lags, activation = 'relu'))  
+model.add(Dense(num_neurons_in_hidden_layers, input_dim=num_lags, activation='relu'))
 
 # Second hidden layer
-model.add(Dense(num_neurons_in_hidden_layers, activation = 'relu'))  
+model.add(Dense(num_neurons_in_hidden_layers, activation='relu'))
 
 # Output layer
 model.add(Dense(1))
 
 # Compiling
-model.compile(loss = 'mean_squared_error', optimizer = 'adam')
+model.compile(loss='mean_squared_error', optimizer='adam')
 
 # Fitting the model
-model.fit(x_train, np.reshape(y_train, (-1, 1)), epochs = num_epochs, batch_size = batch_size)
+model.fit(x_train, np.reshape(y_train, (-1, 1)), epochs=num_epochs, batch_size=batch_size)
 
 # Predicting in-sample
 y_predicted_train = np.reshape(model.predict(x_train), (-1, 1))
@@ -63,6 +63,7 @@ print('Accuracy Test = ', round(calculate_accuracy(y_predicted, y_test), 2), '%'
 print('RMSE Train = ', round(np.sqrt(mean_squared_error(y_predicted_train, y_train)), 10))
 print('RMSE Test = ', round(np.sqrt(mean_squared_error(y_predicted, y_test)), 10))
 print('Correlation In-Sample Predicted/Train = ', round(np.corrcoef(np.reshape(y_predicted_train, (-1)), y_train)[0][1], 3))
-print('Correlation Out-of-Sample Predicted/Test = ', round(np.corrcoef(np.reshape(y_predicted, (-1)), np.reshape(y_test, (-1)))[0][1], 3))
+print('Correlation Out-of-Sample Predicted/Test = ',
+      round(np.corrcoef(np.reshape(y_predicted, (-1)), np.reshape(y_test, (-1)))[0][1], 3))
 print('Model Bias = ', round(model_bias(y_predicted), 2))
 print('---')

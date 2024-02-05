@@ -5,8 +5,8 @@ import keras
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from master_function import data_preprocessing
-from master_function import plot_train_test_values, calculate_accuracy, model_bias
+from dlf.master_function import data_preprocessing
+from dlf.master_function import plot_train_test_values, calculate_accuracy, model_bias
 from sklearn.metrics import mean_squared_error
 
 # Generate the sine wave

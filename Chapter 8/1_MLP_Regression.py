@@ -26,7 +26,7 @@ num_neurons_in_hidden_layers = 20
 num_epochs = 500
 batch_size = 16
 
-# Creating the training and test sets
+# Creating the training and test sets d
 x_train, y_train, x_test, y_test = data_preprocessing(data, num_lags, train_test_split)
 
 # Designing the architecture of the model

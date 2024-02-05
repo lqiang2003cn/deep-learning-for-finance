@@ -56,7 +56,7 @@ def mass_import(asset, time_frame):
     #     data = data.iloc[:, 1:5].values
     #     data = data.round(decimals=5)
     if time_frame == 'D1':
-        file_name = f"""00_data/Daily_{assets[asset]}_Historical_Data.xlsx"""
+        file_name = f"""../00_data/Daily_{assets[asset]}_Historical_Data.xlsx"""
         data = pd.read_excel(file_name)
         data = data.iloc[:, 1:5].values
         data = data.round(decimals=5)
@@ -176,7 +176,9 @@ def plot_train_test_values(window, train_window, y_train, y_test, y_predicted):
     y_predicted = np.reshape(y_predicted, (-1, 1))
     y_test = np.reshape(y_test, (-1, 1))
     plotting_time_series = np.zeros((prediction_window, 3))
+    # the last 50 true returns in the train data set
     plotting_time_series[0:first, 0] = y_train[-first:]
+    # the last 50 true returns in the test data set
     plotting_time_series[first:, 1] = y_test[0:second, 0]
     plotting_time_series[first:, 2] = y_predicted[0:second, 0]
     plotting_time_series[0:first, 1] = plotting_time_series[0:first, 1] / 0
@@ -188,6 +190,8 @@ def plot_train_test_values(window, train_window, y_train, y_test, y_predicted):
     plt.axvline(x=first, color='black', linestyle='--', linewidth=1)
     plt.grid()
     plt.legend()
+    plt.savefig("../01_pngs/train.png")
+    plt.close()
 
 
 def forecasting_threshold(predictions, threshold):
@@ -204,6 +208,7 @@ def forecasting_threshold(predictions, threshold):
 def calculate_accuracy(predicted_returns, real_returns):
     predicted_returns = np.reshape(predicted_returns, (-1, 1))
     real_returns = np.reshape(real_returns, (-1, 1))
+    # the trend is right, don't care about the numbers
     hits = sum((np.sign(predicted_returns)) == np.sign(real_returns))
     total_samples = len(predicted_returns)
     accuracy = hits / total_samples

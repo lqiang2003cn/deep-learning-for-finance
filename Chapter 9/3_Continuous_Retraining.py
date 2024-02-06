@@ -29,6 +29,7 @@ y_predicted = []
 latest_values = np.transpose(np.reshape(x_test[0], (-1, 1)))
 
 # Isolate the real values for comparison
+# true value of y_test
 y_test_store = y_test
 y_train_store = y_train
 
